@@ -1,0 +1,1274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Grove at Pescadero — A Luxury Farm-to-Table Community</title>
+  <meta name="description" content="The Grove at Pescadero is an 18-home luxury farm-to-table community nestled between the farmlands and coastline of Baja California Sur. Residence #2 available at $1,795,000." />
+
+  <!-- Meta Pixel -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '4109849605914163');
+    fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=4109849605914163&ev=PageView&noscript=1"/></noscript>
+
+  <!-- Google Analytics GA4 — replace G-XXXXXXXXXX with your Measurement ID -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --sand:      #f4eeea;
+      --sand-dark: #e8ddd5;
+      --grove-green: #2d3d2e;
+      --grove-sage:  #5a7a5c;
+      --grove-light: #8aab7e;
+      --rare-blue:   #0f509b;
+      --orange:      #dd7447;
+      --white:       #ffffff;
+      --ink:         #1a1a18;
+      --ink-soft:    #3d3d38;
+      --ink-muted:   #6b6b60;
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans:  'DM Sans', system-ui, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      background: var(--sand);
+      color: var(--ink);
+      overflow-x: hidden;
+    }
+
+    /* ─── NAV ──────────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 40px;
+      background: transparent;
+      transition: background 0.4s, backdrop-filter 0.4s;
+    }
+    nav.scrolled {
+      background: rgba(244,238,234,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(90,122,92,0.15);
+    }
+    .nav-logo {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      color: var(--white);
+      text-transform: uppercase;
+      transition: color 0.4s;
+    }
+    nav.scrolled .nav-logo { color: var(--grove-green); }
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 22px;
+      background: var(--grove-green);
+      color: var(--white);
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: background 0.25s;
+    }
+    .nav-cta:hover { background: var(--grove-sage); }
+
+    /* ─── HERO ─────────────────────────────────────────────── */
+    .hero {
+      position: relative;
+      height: 100vh;
+      min-height: 600px;
+      overflow: hidden;
+    }
+    .hero-slides {
+      position: absolute;
+      inset: 0;
+    }
+    .hero-slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 1.2s ease;
+      background-size: cover;
+      background-position: center;
+    }
+    .hero-slide.active { opacity: 1; }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(26,26,24,0.25) 0%,
+        rgba(26,26,24,0.1) 40%,
+        rgba(26,26,24,0.55) 100%
+      );
+    }
+    .hero-content {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      padding: 0 24px 72px;
+      text-align: center;
+    }
+    .hero-eyebrow {
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.75);
+      margin-bottom: 14px;
+    }
+    .hero-title {
+      font-family: var(--serif);
+      font-size: clamp(3rem, 7vw, 6rem);
+      font-weight: 300;
+      line-height: 0.95;
+      color: var(--white);
+      letter-spacing: 0.02em;
+      margin-bottom: 20px;
+    }
+    .hero-title em {
+      font-style: italic;
+      font-weight: 300;
+      color: rgba(255,255,255,0.85);
+    }
+    .hero-sub {
+      font-family: var(--serif);
+      font-size: clamp(1rem, 2vw, 1.3rem);
+      font-weight: 300;
+      color: rgba(255,255,255,0.8);
+      letter-spacing: 0.06em;
+      margin-bottom: 32px;
+    }
+    .hero-btn {
+      display: inline-block;
+      padding: 14px 36px;
+      background: var(--white);
+      color: var(--grove-green);
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: background 0.25s, color 0.25s;
+    }
+    .hero-btn:hover {
+      background: var(--grove-green);
+      color: var(--white);
+    }
+    .hero-dots {
+      position: absolute;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 8px;
+    }
+    .hero-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.4);
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .hero-dot.active { background: var(--white); }
+
+    /* ─── STRIP ────────────────────────────────────────────── */
+    .strip {
+      background: var(--grove-green);
+      color: var(--white);
+      padding: 16px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+    .strip-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 400;
+    }
+    .strip-item svg { opacity: 0.7; flex-shrink: 0; }
+    .strip-divider {
+      width: 1px;
+      height: 20px;
+      background: rgba(255,255,255,0.25);
+    }
+
+    /* ─── SECTION SHARED ────────────────────────────────────── */
+    section { padding: 96px 24px; }
+    .container { max-width: 1160px; margin: 0 auto; }
+
+    .section-label {
+      font-family: var(--sans);
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--grove-sage);
+      margin-bottom: 16px;
+    }
+    .section-title {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      font-weight: 300;
+      line-height: 1.1;
+      color: var(--grove-green);
+      margin-bottom: 24px;
+    }
+    .section-title em { font-style: italic; }
+    .section-body {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: var(--ink-soft);
+      max-width: 640px;
+    }
+
+    /* ─── INTRO TWO-COL ─────────────────────────────────────── */
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .intro-img-wrap {
+      position: relative;
+      aspect-ratio: 4/5;
+      overflow: hidden;
+      border-radius: 2px;
+    }
+    .intro-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .intro-badge {
+      position: absolute;
+      bottom: -20px;
+      right: -20px;
+      width: 120px;
+      height: 120px;
+      background: var(--grove-green);
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: var(--white);
+    }
+    .intro-badge strong {
+      font-family: var(--serif);
+      font-size: 1.8rem;
+      font-weight: 400;
+      line-height: 1;
+    }
+    .intro-badge span {
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      opacity: 0.7;
+    }
+    .intro-text { padding-left: 16px; }
+    .intro-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 40px;
+      padding-top: 40px;
+      border-top: 1px solid var(--sand-dark);
+    }
+    .stat-val {
+      font-family: var(--serif);
+      font-size: 2.2rem;
+      font-weight: 300;
+      color: var(--grove-green);
+      line-height: 1;
+    }
+    .stat-lbl {
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      margin-top: 4px;
+    }
+
+    /* ─── VIDEO SECTION ─────────────────────────────────────── */
+    .video-section {
+      background: var(--grove-green);
+      padding: 80px 24px;
+    }
+    .video-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      margin-top: 48px;
+    }
+    .video-wrap {
+      position: relative;
+      aspect-ratio: 16/9;
+      overflow: hidden;
+      border-radius: 2px;
+    }
+    .video-wrap iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    .video-label {
+      margin-top: 12px;
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+    }
+    .video-section .section-label { color: var(--grove-light); }
+    .video-section .section-title { color: var(--white); }
+    .video-section .section-body { color: rgba(255,255,255,0.65); }
+
+    /* ─── GALLERY ───────────────────────────────────────────── */
+    .gallery-section { background: var(--white); }
+    .gallery-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 40px;
+      gap: 24px;
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: auto;
+      gap: 12px;
+    }
+    .gallery-cell {
+      overflow: hidden;
+      border-radius: 2px;
+      cursor: pointer;
+    }
+    .gallery-cell:first-child {
+      grid-column: span 2;
+      grid-row: span 2;
+    }
+    .gallery-cell img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s ease;
+    }
+    .gallery-cell:hover img { transform: scale(1.04); }
+    .gallery-cell:first-child { aspect-ratio: unset; min-height: 520px; }
+    .gallery-cell:not(:first-child) { aspect-ratio: 4/3; }
+
+    /* lightbox */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(26,26,24,0.95);
+      z-index: 200;
+      align-items: center;
+      justify-content: center;
+    }
+    .lightbox.open { display: flex; }
+    .lightbox img {
+      max-width: 90vw;
+      max-height: 90vh;
+      object-fit: contain;
+      border-radius: 2px;
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 24px;
+      right: 32px;
+      font-size: 2rem;
+      color: var(--white);
+      cursor: pointer;
+      line-height: 1;
+      opacity: 0.7;
+      background: none;
+      border: none;
+      transition: opacity 0.2s;
+    }
+    .lightbox-close:hover { opacity: 1; }
+
+    /* ─── RESIDENCE FEATURE ─────────────────────────────────── */
+    .residence-section { background: var(--sand); }
+    .residence-grid {
+      display: grid;
+      grid-template-columns: 55% 45%;
+      gap: 0;
+      align-items: stretch;
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 0 32px 80px rgba(26,26,24,0.12);
+    }
+    .residence-img {
+      position: relative;
+      min-height: 560px;
+    }
+    .residence-img img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .residence-tag {
+      position: absolute;
+      top: 24px;
+      left: 24px;
+      background: var(--grove-green);
+      color: var(--white);
+      font-size: 0.68rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 2px;
+    }
+    .residence-info {
+      background: var(--grove-green);
+      color: var(--white);
+      padding: 56px 48px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .residence-info .section-label { color: var(--grove-light); }
+    .residence-info .section-title { color: var(--white); margin-bottom: 16px; }
+    .residence-price {
+      font-family: var(--serif);
+      font-size: 2.4rem;
+      font-weight: 300;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+    .residence-mls {
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+      margin-bottom: 32px;
+    }
+    .res-features {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px 24px;
+      margin-bottom: 40px;
+    }
+    .res-feat {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .res-feat-val {
+      font-family: var(--serif);
+      font-size: 1.5rem;
+      font-weight: 300;
+      color: var(--white);
+      line-height: 1;
+    }
+    .res-feat-lbl {
+      font-size: 0.68rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+    }
+    .res-cta {
+      display: inline-block;
+      padding: 14px 32px;
+      background: var(--white);
+      color: var(--grove-green);
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 2px;
+      text-align: center;
+      transition: background 0.25s, color 0.25s;
+    }
+    .res-cta:hover {
+      background: var(--orange);
+      color: var(--white);
+    }
+
+    /* ─── LIFESTYLE ─────────────────────────────────────────── */
+    .lifestyle-section { background: var(--sand-dark); }
+    .lifestyle-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      margin-top: 56px;
+    }
+    .lifestyle-card { display: flex; flex-direction: column; gap: 16px; }
+    .lifestyle-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--grove-green);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .lifestyle-icon svg { color: var(--white); }
+    .lifestyle-card h3 {
+      font-family: var(--serif);
+      font-size: 1.4rem;
+      font-weight: 400;
+      color: var(--grove-green);
+    }
+    .lifestyle-card p {
+      font-size: 0.93rem;
+      line-height: 1.75;
+      color: var(--ink-soft);
+    }
+
+    /* ─── ABOUT THE AGENTS ──────────────────────────────────── */
+    .agents-section { background: var(--white); }
+    .agents-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      margin-top: 56px;
+    }
+    .agent-card {
+      display: flex;
+      gap: 24px;
+      align-items: flex-start;
+    }
+    .agent-avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: var(--sand-dark);
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+    .agent-avatar img { width: 100%; height: 100%; object-fit: cover; }
+    .agent-avatar-placeholder {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: var(--grove-green);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      font-family: var(--serif);
+      font-size: 1.6rem;
+      font-weight: 300;
+      flex-shrink: 0;
+    }
+    .agent-name {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      font-weight: 500;
+      color: var(--grove-green);
+      margin-bottom: 4px;
+    }
+    .agent-title {
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      margin-bottom: 12px;
+    }
+    .agent-bio {
+      font-size: 0.9rem;
+      line-height: 1.7;
+      color: var(--ink-soft);
+    }
+    .agent-contact {
+      margin-top: 12px;
+      font-size: 0.85rem;
+      color: var(--rare-blue);
+      text-decoration: none;
+    }
+    .agent-contact:hover { text-decoration: underline; }
+
+    /* ─── CONTACT FORM ──────────────────────────────────────── */
+    .contact-section {
+      background: var(--grove-green);
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .contact-section .section-label { color: var(--grove-light); }
+    .contact-section .section-title { color: var(--white); }
+    .contact-section .section-body { color: rgba(255,255,255,0.65); }
+
+    .contact-list {
+      margin-top: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.7);
+    }
+    .contact-item svg { flex-shrink: 0; opacity: 0.6; }
+
+    .form-card {
+      background: var(--sand);
+      border-radius: 4px;
+      padding: 48px;
+    }
+    .form-title {
+      font-family: var(--serif);
+      font-size: 1.8rem;
+      font-weight: 400;
+      color: var(--grove-green);
+      margin-bottom: 8px;
+    }
+    .form-sub {
+      font-size: 0.88rem;
+      color: var(--ink-muted);
+      margin-bottom: 32px;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 16px;
+    }
+    .form-group label {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      padding: 12px 16px;
+      background: var(--white);
+      border: 1px solid var(--sand-dark);
+      border-radius: 2px;
+      font-family: var(--sans);
+      font-size: 0.9rem;
+      color: var(--ink);
+      outline: none;
+      transition: border-color 0.2s;
+      appearance: none;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--grove-sage);
+    }
+    .form-group textarea { resize: vertical; min-height: 90px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .form-submit {
+      width: 100%;
+      padding: 14px;
+      background: var(--grove-green);
+      color: var(--white);
+      border: none;
+      border-radius: 2px;
+      font-family: var(--sans);
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      cursor: pointer;
+      margin-top: 8px;
+      transition: background 0.25s;
+    }
+    .form-submit:hover { background: var(--grove-sage); }
+    .form-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 24px 0;
+    }
+    .form-success svg { color: var(--grove-sage); margin-bottom: 12px; }
+    .form-success h3 {
+      font-family: var(--serif);
+      font-size: 1.6rem;
+      color: var(--grove-green);
+      margin-bottom: 8px;
+    }
+    .form-success p { font-size: 0.9rem; color: var(--ink-muted); }
+    .form-note {
+      font-size: 0.72rem;
+      color: var(--ink-muted);
+      margin-top: 10px;
+      text-align: center;
+    }
+
+    /* ─── FOOTER ────────────────────────────────────────────── */
+    footer {
+      background: var(--ink);
+      color: rgba(255,255,255,0.5);
+      padding: 40px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .footer-logo {
+      font-family: var(--serif);
+      font-size: 1rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.7);
+    }
+    .footer-rare {
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+    }
+    .footer-rare a {
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+    }
+    .footer-rare a:hover { color: var(--white); }
+    .footer-legal {
+      font-size: 0.72rem;
+      text-align: right;
+    }
+
+    /* ─── RESPONSIVE ────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      nav { padding: 16px 24px; }
+      .intro-grid,
+      .residence-grid,
+      .contact-grid,
+      .agents-grid,
+      .video-grid { grid-template-columns: 1fr; }
+      .intro-badge { bottom: -12px; right: -12px; width: 88px; height: 88px; }
+      .intro-badge strong { font-size: 1.3rem; }
+      .intro-text { padding-left: 0; }
+      .residence-img { min-height: 320px; }
+      .residence-info { padding: 40px 32px; }
+      .gallery-grid { grid-template-columns: 1fr 1fr; }
+      .gallery-cell:first-child { grid-column: span 2; min-height: 320px; }
+      .lifestyle-grid { grid-template-columns: 1fr; gap: 40px; }
+      .form-card { padding: 32px 24px; }
+      .strip { padding: 14px 24px; gap: 16px; }
+      .strip-divider { display: none; }
+      footer { flex-direction: column; align-items: flex-start; }
+      .footer-legal { text-align: left; }
+      .video-grid { gap: 24px; }
+    }
+    @media (max-width: 540px) {
+      .hero-title { font-size: 2.6rem; }
+      .gallery-grid { grid-template-columns: 1fr; }
+      .gallery-cell:first-child { grid-column: span 1; }
+      .form-row { grid-template-columns: 1fr; }
+      .res-features { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ─── NAV ─────────────────────────────────────────────── -->
+  <nav id="mainNav">
+    <div class="nav-logo">The Grove · Pescadero</div>
+    <a href="#contact" class="nav-cta">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      Inquire
+    </a>
+  </nav>
+
+  <!-- ─── HERO ─────────────────────────────────────────────── -->
+  <section class="hero" id="home">
+    <div class="hero-slides" id="heroSlides">
+      <div class="hero-slide active" style="background-image:url('https://cdn.resize.sparkplatform.com/cab/1280x1024/true/20250801162620222590000000-o.jpg')"></div>
+      <div class="hero-slide" style="background-image:url('https://cdn.resize.sparkplatform.com/cab/1280x1024/true/20250514161826245026000000-o.jpg')"></div>
+      <div class="hero-slide" style="background-image:url('https://cdn.resize.sparkplatform.com/cab/1280x1024/true/20250521205012194988000000-o.jpg')"></div>
+      <div class="hero-slide" style="background-image:url('https://cdn.resize.sparkplatform.com/cab/1280x1024/true/20250801162621616892000000-o.jpg')"></div>
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">Pescadero · Baja California Sur · Mexico</p>
+      <h1 class="hero-title">The Grove<br/><em>at Pescadero</em></h1>
+      <p class="hero-sub">A Luxury Farm-to-Table Community · 18 Residences</p>
+      <a href="#contact" class="hero-btn">Schedule a Private Tour</a>
+    </div>
+    <div class="hero-dots" id="heroDots"></div>
+  </section>
+
+  <!-- ─── STRIP ─────────────────────────────────────────────── -->
+  <div class="strip">
+    <div class="strip-item">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      18-Home Community
+    </div>
+    <div class="strip-divider"></div>
+    <div class="strip-item">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      Ocean Views
+    </div>
+    <div class="strip-divider"></div>
+    <div class="strip-item">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      Escritura Title
+    </div>
+    <div class="strip-divider"></div>
+    <div class="strip-item">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      Minutes from World-Class Surf
+    </div>
+    <div class="strip-divider"></div>
+    <div class="strip-item">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+      Regenerative Living
+    </div>
+  </div>
+
+  <!-- ─── INTRO ─────────────────────────────────────────────── -->
+  <section id="about">
+    <div class="container">
+      <div class="intro-grid">
+        <div class="intro-img-wrap">
+          <img src="https://cdn.resize.sparkplatform.com/cab/1280x1024/true/20250514161953211904000000-o.jpg" alt="The Grove at Pescadero" loading="lazy" />
+          <div class="intro-badge">
+            <strong>18</strong>
+            <span>Homes</span>
+          </div>
+        </div>
+        <div class="intro-text">
+          <p class="section-label">About the Community</p>
+          <h2 class="section-title">Where the farmland<br/><em>meets the Pacific</em></h2>
+          <p class="section-body">
+            Nestled between the fertile farmlands and pristine coastline of Baja California Sur, The Grove at Pescadero is a curated community of 18 private residences built around a singular vision: luxury in harmony with the land.
+          </p>
+          <p class="section-body" style="margin-top:16px;">
+            Each home is designed by a visionary architect-builder to embody regenerative living — where modern comforts, ocean views, and a connection to the surrounding agricultural landscape create a daily experience unlike anywhere else in Baja.
+          </p>
+          <p class="section-body" style="margin-top:16px;">
+            Minutes from world-class surf breaks, an innovative culinary scene, and the cultural richness of Todos Santos, The Grove offers a lifestyle as rare as its location.
+          </p>
+          <div class="intro-stats">
+            <div>
+              <div class="stat-val">2,000 m²</div>
+              <div class="stat-lbl">Lot Area</div>
+            </div>
+            <div>
+              <div class="stat-val">337 m²</div>
+              <div class="stat-lbl">Construction Area</div>
+            </div>
+            <div>
+              <div class="stat-val">4 BD / 4 BA</div>
+              <div class="stat-lbl">Bedrooms · Baths</div>
+            </div>
+            <div>
+              <div class="stat-val">Pool</div>
+              <div class="stat-lbl">Private · Included</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── VIDEO ─────────────────────────────────────────────── -->
+  <section class="video-section" id="vision">
+    <div class="container">
+      <p class="section-label">The Vision</p>
+      <h2 class="section-title" style="color:var(--white)">See <em>The Grove</em> come to life</h2>
+      <p class="section-body" style="color:rgba(255,255,255,0.65)">
+        From aerial renders to the finished residence, experience the full arc of The Grove — from concept to reality.
+      </p>
+      <div class="video-grid">
+        <div>
+          <div class="video-wrap">
+            <iframe src="https://www.youtube.com/embed/BzMtgRiyoSY" title="The Grove at Pescadero — Aerial Renders" allowfullscreen loading="lazy"></iframe>
+          </div>
+          <p class="video-label">Aerial Render · The Community</p>
+        </div>
+        <div>
+          <div class="video-wrap">
+            <iframe src="https://www.youtube.com/embed/KqfjxdrBbVQ" title="The Grove at Pescadero — The Finished Residence" allowfullscreen loading="lazy"></iframe>
+          </div>
+          <p class="video-label">The Finished Residence · Tour</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── GALLERY ───────────────────────────────────────────── -->
+  <section class="gallery-section" id="gallery">
+    <div class="container">
+      <div class="gallery-header">
+        <div>
+          <p class="section-label">Photo Gallery</p>
+          <h2 class="section-title">Inside <em>Residence #2</em></h2>
+        </div>
+        <p style="font-size:0.85rem;color:var(--ink-muted);max-width:280px;text-align:right;line-height:1.6;">Click any image to view full size. Final photography available upon request.</p>
+      </div>
+      <div class="gallery-grid" id="galleryGrid">
+        <!-- images injected by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── RESIDENCE FEATURE ─────────────────────────────────── -->
+  <section class="residence-section" id="residence">
+    <div class="container">
+      <p class="section-label" style="margin-bottom:32px;">Available Now</p>
+      <div class="residence-grid">
+        <div class="residence-img">
+          <img src="https://cdn.resize.sparkplatform.com/cab/1280x1024/true/20250603013812057333000000-o.jpg" alt="The Grove Residence #2" loading="lazy" />
+          <div class="residence-tag">Residence #2 · MLS 25-2563</div>
+        </div>
+        <div class="residence-info">
+          <p class="section-label">Currently Available</p>
+          <h2 class="section-title">The Grove<br/><em>Residence #2</em></h2>
+          <div class="residence-price">$1,795,000</div>
+          <div class="residence-mls">MLS 25-2563 · Pescadero / Cerritos</div>
+          <div class="res-features">
+            <div class="res-feat">
+              <span class="res-feat-val">4</span>
+              <span class="res-feat-lbl">Bedrooms</span>
+            </div>
+            <div class="res-feat">
+              <span class="res-feat-val">4 + 2½</span>
+              <span class="res-feat-lbl">Bathrooms</span>
+            </div>
+            <div class="res-feat">
+              <span class="res-feat-val">2,000 m²</span>
+              <span class="res-feat-lbl">Lot Area</span>
+            </div>
+            <div class="res-feat">
+              <span class="res-feat-val">337 m²</span>
+              <span class="res-feat-lbl">Built Area</span>
+            </div>
+            <div class="res-feat">
+              <span class="res-feat-val">Pool</span>
+              <span class="res-feat-lbl">Private</span>
+            </div>
+            <div class="res-feat">
+              <span class="res-feat-val">Escritura</span>
+              <span class="res-feat-lbl">Title Type</span>
+            </div>
+          </div>
+          <a href="#contact" class="res-cta">Request Full Details</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── LIFESTYLE ─────────────────────────────────────────── -->
+  <section class="lifestyle-section" id="lifestyle">
+    <div class="container">
+      <p class="section-label">The Lifestyle</p>
+      <h2 class="section-title">Designed for <em>how you live</em></h2>
+      <div class="lifestyle-grid">
+        <div class="lifestyle-card">
+          <div class="lifestyle-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 0v10l6 3"/></svg>
+          </div>
+          <h3>Farm-to-Table Living</h3>
+          <p>The community is woven into the agricultural landscape of Pescadero — farmlands at your doorstep, the freshest produce as a daily rhythm. Living here means eating differently, and living better.</p>
+        </div>
+        <div class="lifestyle-card">
+          <div class="lifestyle-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 22 L12 2 L22 22"/><path d="M6 15 Q12 8 18 15"/></svg>
+          </div>
+          <h3>Surf, Sea & Solitude</h3>
+          <p>Minutes from world-class surf breaks and the Pacific coast, The Grove gives you immediate access to Baja's extraordinary natural playground — without sacrificing the comforts of an architecturally designed home.</p>
+        </div>
+        <div class="lifestyle-card">
+          <div class="lifestyle-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          </div>
+          <h3>Regenerative Design</h3>
+          <p>Every architectural decision — from materials to orientation to landscape — is made in service of ecological balance. The Grove was conceived not to interrupt the land, but to participate in it.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── AGENTS ─────────────────────────────────────────────── -->
+  <section class="agents-section" id="agents">
+    <div class="container">
+      <p class="section-label">Your Exclusive Agents</p>
+      <h2 class="section-title">Meet the team<br/><em>representing The Grove</em></h2>
+      <div class="agents-grid">
+        <div class="agent-card">
+          <div class="agent-avatar"><img src="https://ricardoamigo.com/assets/img/staff/rick.jpg" alt="Rick Kessler" /></div>
+          <div>
+            <div class="agent-name">Rick Kessler</div>
+            <div class="agent-title">Luxury Property Specialist · RARE</div>
+            <p class="agent-bio">Rick brings deep knowledge of the Baja California Sur luxury market and a client-first approach to every transaction. With a focus on exceptional properties, he's your guide to everything The Grove has to offer.</p>
+            <a class="agent-contact" href="mailto&#58;rick&#64;ricardoamigo&#46;com">rick&#64;ricardoamigo&#46;com</a>
+          </div>
+        </div>
+        <div class="agent-card">
+          <div class="agent-avatar"><img src="https://ricardoamigo.com/assets/img/staff/aaronw.jpg" alt="Aaron Warkov" /></div>
+          <div>
+            <div class="agent-name">Aaron Warkov</div>
+            <div class="agent-title">Luxury Property Specialist · RARE</div>
+            <p class="agent-bio">Aaron specializes in connecting discerning buyers with the finest properties across Todos Santos, Pescadero, and Cerritos. His expertise in the Baja luxury market makes him an invaluable partner in your property search.</p>
+            <a class="agent-contact" href="mailto&#58;aaronw&#64;ricardoamigo&#46;com">aaronw&#64;ricardoamigo&#46;com</a>
+          </div>
+        </div>
+      </div>
+      <p style="margin-top:32px;font-size:0.82rem;color:var(--ink-muted);">Exclusively represented by <strong>Ricardo Amigo Real Estate</strong> · Todos Santos, B.C.S., Mexico</p>
+    </div>
+  </section>
+
+  <!-- ─── CONTACT ────────────────────────────────────────────── -->
+  <section class="contact-section" id="contact">
+    <div class="container">
+      <div class="contact-grid">
+        <div>
+          <p class="section-label">Get in Touch</p>
+          <h2 class="section-title">Interested in<br/><em>The Grove?</em></h2>
+          <p class="section-body">
+            Residence #2 is available now at $1,795,000. Our agents are ready to answer your questions, arrange a private tour, or share full documentation.
+          </p>
+          <div class="contact-list">
+            <div class="contact-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Pescadero, Baja California Sur, Mexico
+            </div>
+            <div class="contact-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="016060736e6f76417368626073656e606c68666e2f626e6c">[email&#160;protected]</a>
+            </div>
+            <div class="contact-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+              MLS 25-2563 · Escritura Title Available
+            </div>
+          </div>
+        </div>
+
+        <div class="form-card">
+          <div class="form-title">Request Information</div>
+          <p class="form-sub">We'll be in touch within 24 hours.</p>
+          <div id="contactForm">
+            <div class="form-row">
+              <div class="form-group">
+                <label>First Name</label>
+                <input type="text" id="firstName" placeholder="Jane" />
+              </div>
+              <div class="form-group">
+                <label>Last Name</label>
+                <input type="text" id="lastName" placeholder="Smith" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Email</label>
+              <input type="email" id="email" placeholder="jane@email.com" />
+            </div>
+            <div class="form-group">
+              <label>Phone (optional)</label>
+              <input type="tel" id="phone" placeholder="+1 (555) 000-0000" />
+            </div>
+            <div class="form-group">
+              <label>I am interested in…</label>
+              <select id="interest">
+                <option value="">Select an option</option>
+                <option value="Residence #2 — $1,795,000">Residence #2 — $1,795,000</option>
+                <option value="General community information">General community information</option>
+                <option value="Scheduling a private tour">Scheduling a private tour</option>
+                <option value="Investment inquiry">Investment inquiry</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Message (optional)</label>
+              <textarea id="message" placeholder="Tell us about yourself or your timeline…"></textarea>
+            </div>
+            <button class="form-submit" id="formSubmit" onclick="submitForm()">Send Inquiry</button>
+            <p class="form-note">Your information is kept private and never shared.</p>
+          </div>
+          <div class="form-success" id="formSuccess">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <h3>Thank you!</h3>
+            <p>We've received your inquiry and will be in touch shortly.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FOOTER ─────────────────────────────────────────────── -->
+  <footer>
+    <div class="footer-logo">The Grove at Pescadero</div>
+    <div class="footer-rare">
+      Exclusively represented by
+      <a href="https://ricardoamigo.com" target="_blank" rel="noopener">Ricardo Amigo Real Estate</a>
+      · Todos Santos, B.C.S.
+    </div>
+    <div class="footer-legal">
+      © 2025 Ricardo Amigo Real Estate<br/>
+      All prices in USD. Subject to change without notice.
+    </div>
+  </footer>
+
+  <!-- ─── LIGHTBOX ──────────────────────────────────────────── -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <button class="lightbox-close" onclick="closeLightbox()">×</button>
+    <img id="lightboxImg" src="" alt="Gallery" />
+  </div>
+
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    // ── Gallery images from Spark CDN ──────────────────────────
+    const galleryImages = [
+      { src: 'https://cdn.resize.sparkplatform.com/cab/1280x1024/true/20250801162620222590000000-o.jpg', alt: 'The Grove Residence #2 — Exterior' },
+      { src: 'https://cdn.resize.sparkplatform.com/cab/1280x1024/true/20250801162620907828000000-o.jpg', alt: 'The Grove Residence #2 — Living' },
+      { src: 'https://cdn.resize.sparkplatform.com/cab/1280x1024/true/20250801162621616892000000-o.jpg', alt: 'The Grove Residence #2' },
+      { src: 'https://cdn.resize.sparkplatform.com/cab/1280x1024/true/20250514161826245026000000-o.jpg', alt: 'The Grove — Render' },
+      { src: 'https://cdn.resize.sparkplatform.com/cab/1280x1024/true/20250521205012194988000000-o.jpg', alt: 'The Grove — Interior' },
+      { src: 'https://cdn.resize.sparkplatform.com/cab/1280x1024/true/20250521205013801209000000-o.jpg', alt: 'The Grove — Pool' },
+      { src: 'https://cdn.resize.sparkplatform.com/cab/1280x1024/true/20250603013812057333000000-o.jpg', alt: 'The Grove — View' },
+    ];
+
+    const grid = document.getElementById('galleryGrid');
+    galleryImages.forEach((img, i) => {
+      const cell = document.createElement('div');
+      cell.className = 'gallery-cell';
+      cell.innerHTML = `<img src="${img.src}" alt="${img.alt}" loading="lazy" />`;
+      cell.addEventListener('click', () => openLightbox(img.src, img.alt));
+      grid.appendChild(cell);
+    });
+
+    // ── Lightbox ───────────────────────────────────────────────
+    function openLightbox(src, alt) {
+      document.getElementById('lightboxImg').src = src;
+      document.getElementById('lightboxImg').alt = alt;
+      document.getElementById('lightbox').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+    // ── Hero slideshow ─────────────────────────────────────────
+    const slides = document.querySelectorAll('.hero-slide');
+    const dotsEl = document.getElementById('heroDots');
+    let current = 0;
+
+    slides.forEach((_, i) => {
+      const dot = document.createElement('div');
+      dot.className = 'hero-dot' + (i === 0 ? ' active' : '');
+      dot.addEventListener('click', () => goTo(i));
+      dotsEl.appendChild(dot);
+    });
+
+    function goTo(n) {
+      slides[current].classList.remove('active');
+      dotsEl.children[current].classList.remove('active');
+      current = n;
+      slides[current].classList.add('active');
+      dotsEl.children[current].classList.add('active');
+    }
+
+    setInterval(() => goTo((current + 1) % slides.length), 5000);
+
+    // ── Nav scroll ─────────────────────────────────────────────
+    window.addEventListener('scroll', () => {
+      document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    // ── Form submission ────────────────────────────────────────
+    async function submitForm() {
+      const btn = document.getElementById('formSubmit');
+      const firstName = document.getElementById('firstName').value.trim();
+      const lastName  = document.getElementById('lastName').value.trim();
+      const email     = document.getElementById('email').value.trim();
+      const phone     = document.getElementById('phone').value.trim();
+      const interest  = document.getElementById('interest').value;
+      const message   = document.getElementById('message').value.trim();
+
+      if (!firstName || !email) {
+        alert('Please enter your name and email.');
+        return;
+      }
+
+      btn.disabled = true;
+      btn.textContent = 'Sending…';
+
+      const formData = {
+        access_key: 'REPLACE_WITH_WEB3FORMS_KEY',
+        subject: '[THE GROVE] New Inquiry — ' + (interest || 'General'),
+        from_name: firstName + ' ' + lastName,
+        email: email,
+        phone: phone || 'Not provided',
+        interest: interest || 'Not specified',
+        message: message || 'No message provided.',
+        redirect: 'false'
+      };
+
+      try {
+        const res = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(formData)
+        });
+        const data = await res.json();
+        if (data.success) {
+          document.getElementById('contactForm').style.display = 'none';
+          document.getElementById('formSuccess').style.display = 'block';
+          if (typeof fbq !== 'undefined') fbq('track', 'Lead');
+          if (typeof gtag !== 'undefined') gtag('event', 'generate_lead', { event_category: 'contact', event_label: interest });
+ 
