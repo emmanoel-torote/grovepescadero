@@ -82,15 +82,19 @@
       border-bottom: 1px solid rgba(90,122,92,0.15);
     }
     .nav-logo {
-      font-family: var(--serif);
-      font-size: 1.1rem;
-      font-weight: 500;
-      letter-spacing: 0.12em;
-      color: var(--white);
-      text-transform: uppercase;
-      transition: color 0.4s;
+      display: flex;
+      align-items: center;
     }
-    nav.scrolled .nav-logo { color: var(--grove-green); }
+    .nav-logo-img {
+      height: 38px;
+      width: auto;
+      display: block;
+      filter: brightness(0) invert(1);
+      transition: filter 0.4s;
+    }
+    nav.scrolled .nav-logo-img {
+      filter: brightness(0) saturate(100%) invert(18%) sepia(40%) saturate(600%) hue-rotate(95deg) brightness(85%);
+    }
     .nav-cta {
       display: inline-flex;
       align-items: center;
@@ -828,7 +832,7 @@
 
   <!-- ─── NAV ─────────────────────────────────────────────── -->
   <nav id="mainNav">
-    <div class="nav-logo">The Grove · Pescadero</div>
+    <div class="nav-logo"><img src="./images/grove-logo-light.png" alt="The Grove at Pescadero" class="nav-logo-img" /></div>
     <a href="#contact" class="nav-cta">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
       Inquire
@@ -838,10 +842,10 @@
   <!-- ─── HERO ─────────────────────────────────────────────── -->
   <section class="hero" id="home">
     <div class="hero-slides" id="heroSlides">
-      <div class="hero-slide active" style="background-image:url('https://cdn.resize.sparkplatform.com/cab/1280x1024/true/20250801162620222590000000-o.jpg')"></div>
-      <div class="hero-slide" style="background-image:url('https://cdn.resize.sparkplatform.com/cab/1280x1024/true/20250514161826245026000000-o.jpg')"></div>
-      <div class="hero-slide" style="background-image:url('https://cdn.resize.sparkplatform.com/cab/1280x1024/true/20250521205012194988000000-o.jpg')"></div>
-      <div class="hero-slide" style="background-image:url('https://cdn.resize.sparkplatform.com/cab/1280x1024/true/20250801162621616892000000-o.jpg')"></div>
+      <div class="hero-slide active" style="background-image:url('./images/hero-1.jpg')"></div>
+      <div class="hero-slide" style="background-image:url('./images/hero-2.jpg')"></div>
+      <div class="hero-slide" style="background-image:url('./images/hero-3.jpg')"></div>
+      <div class="hero-slide" style="background-image:url('./images/hero-4.jpg')"></div>
     </div>
     <div class="hero-overlay"></div>
     <div class="hero-content">
@@ -886,7 +890,7 @@
     <div class="container">
       <div class="intro-grid">
         <div class="intro-img-wrap">
-          <img src="https://cdn.resize.sparkplatform.com/cab/1280x1024/true/20250514161953211904000000-o.jpg" alt="The Grove at Pescadero" loading="lazy" />
+          <img src="./images/intro-feature.jpg" alt="The Grove at Pescadero" loading="lazy" />
           <div class="intro-badge">
             <strong>18</strong>
             <span>Homes</span>
@@ -974,7 +978,7 @@
       <p class="section-label" style="margin-bottom:32px;">Available Now</p>
       <div class="residence-grid">
         <div class="residence-img">
-          <img src="https://cdn.resize.sparkplatform.com/cab/1280x1024/true/20250603013812057333000000-o.jpg" alt="The Grove Residence #2" loading="lazy" />
+          <img src="./images/gallery-07.jpg" alt="The Grove Residence #2 — Night" loading="lazy" />
           <div class="residence-tag">Residence #2 · MLS 25-2563</div>
         </div>
         <div class="residence-info">
@@ -1172,13 +1176,15 @@
   <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     // ── Gallery images from Spark CDN ──────────────────────────
     const galleryImages = [
-      { src: 'https://cdn.resize.sparkplatform.com/cab/1280x1024/true/20250801162620222590000000-o.jpg', alt: 'The Grove Residence #2 — Exterior' },
-      { src: 'https://cdn.resize.sparkplatform.com/cab/1280x1024/true/20250801162620907828000000-o.jpg', alt: 'The Grove Residence #2 — Living' },
-      { src: 'https://cdn.resize.sparkplatform.com/cab/1280x1024/true/20250801162621616892000000-o.jpg', alt: 'The Grove Residence #2' },
-      { src: 'https://cdn.resize.sparkplatform.com/cab/1280x1024/true/20250514161826245026000000-o.jpg', alt: 'The Grove — Render' },
-      { src: 'https://cdn.resize.sparkplatform.com/cab/1280x1024/true/20250521205012194988000000-o.jpg', alt: 'The Grove — Interior' },
-      { src: 'https://cdn.resize.sparkplatform.com/cab/1280x1024/true/20250521205013801209000000-o.jpg', alt: 'The Grove — Pool' },
-      { src: 'https://cdn.resize.sparkplatform.com/cab/1280x1024/true/20250603013812057333000000-o.jpg', alt: 'The Grove — View' },
+      { src: './images/gallery-01.jpg', alt: 'The Grove — Exterior frontal' },
+      { src: './images/gallery-02.jpg', alt: 'The Grove — Living / Sala' },
+      { src: './images/gallery-03.jpg', alt: 'The Grove — Terraza / Pool' },
+      { src: './images/gallery-04.jpg', alt: 'The Grove — Recámara principal' },
+      { src: './images/gallery-05.jpg', alt: 'The Grove — Baño principal' },
+      { src: './images/gallery-06.jpg', alt: 'The Grove — Cocina' },
+      { src: './images/gallery-07.jpg', alt: 'The Grove — Night shot exterior' },
+      { src: './images/gallery-08.jpg', alt: 'The Grove — Vista panorámica' },
+      { src: './images/gallery-09.jpg', alt: 'The Grove — Detalle arquitectónico' },
     ];
 
     const grid = document.getElementById('galleryGrid');
@@ -1271,4 +1277,3 @@
           document.getElementById('formSuccess').style.display = 'block';
           if (typeof fbq !== 'undefined') fbq('track', 'Lead');
           if (typeof gtag !== 'undefined') gtag('event', 'generate_lead', { event_category: 'contact', event_label: interest });
- 
