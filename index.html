@@ -86,7 +86,7 @@
       align-items: center;
     }
     .nav-logo-img {
-      height: 120px;
+      height: 52px;
       width: auto;
       display: block;
       filter: brightness(0) invert(1);
@@ -967,7 +967,33 @@
         <p style="font-size:0.85rem;color:var(--ink-muted);max-width:280px;text-align:right;line-height:1.6;">Click any image to view full size. Final photography available upon request.</p>
       </div>
       <div class="gallery-grid" id="galleryGrid">
-        <!-- images injected by JS -->
+        <div class="gallery-cell" onclick="openLightbox('./images/gallery-01.jpg','Exterior frontal')">
+          <img src="./images/gallery-01.jpg" alt="The Grove — Exterior frontal" loading="lazy" />
+        </div>
+        <div class="gallery-cell" onclick="openLightbox('./images/gallery-02.jpg','Living / Sala')">
+          <img src="./images/gallery-02.jpg" alt="The Grove — Living / Sala" loading="lazy" />
+        </div>
+        <div class="gallery-cell" onclick="openLightbox('./images/gallery-03.jpg','Terraza / Pool')">
+          <img src="./images/gallery-03.jpg" alt="The Grove — Terraza / Pool" loading="lazy" />
+        </div>
+        <div class="gallery-cell" onclick="openLightbox('./images/gallery-04.jpg','Recámara principal')">
+          <img src="./images/gallery-04.jpg" alt="The Grove — Recámara principal" loading="lazy" />
+        </div>
+        <div class="gallery-cell" onclick="openLightbox('./images/gallery-05.jpg','Baño principal')">
+          <img src="./images/gallery-05.jpg" alt="The Grove — Baño principal" loading="lazy" />
+        </div>
+        <div class="gallery-cell" onclick="openLightbox('./images/gallery-06.jpg','Cocina')">
+          <img src="./images/gallery-06.jpg" alt="The Grove — Cocina" loading="lazy" />
+        </div>
+        <div class="gallery-cell" onclick="openLightbox('./images/gallery-07.jpg','Night shot exterior')">
+          <img src="./images/gallery-07.jpg" alt="The Grove — Night shot exterior" loading="lazy" />
+        </div>
+        <div class="gallery-cell" onclick="openLightbox('./images/gallery-08.jpg','Vista panorámica')">
+          <img src="./images/gallery-08.jpg" alt="The Grove — Vista panorámica" loading="lazy" />
+        </div>
+        <div class="gallery-cell" onclick="openLightbox('./images/gallery-09.jpg','Detalle arquitectónico')">
+          <img src="./images/gallery-09.jpg" alt="The Grove — Detalle arquitectónico" loading="lazy" />
+        </div>
       </div>
     </div>
   </section>
@@ -1175,26 +1201,7 @@
 
   <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     // ── Gallery images from Spark CDN ──────────────────────────
-    const galleryImages = [
-      { src: './images/gallery-01.jpg', alt: 'The Grove — Exterior frontal' },
-      { src: './images/gallery-02.jpg', alt: 'The Grove — Living / Sala' },
-      { src: './images/gallery-03.jpg', alt: 'The Grove — Terraza / Pool' },
-      { src: './images/gallery-04.jpg', alt: 'The Grove — Recámara principal' },
-      { src: './images/gallery-05.jpg', alt: 'The Grove — Baño principal' },
-      { src: './images/gallery-06.jpg', alt: 'The Grove — Cocina' },
-      { src: './images/gallery-07.jpg', alt: 'The Grove — Night shot exterior' },
-      { src: './images/gallery-08.jpg', alt: 'The Grove — Vista panorámica' },
-      { src: './images/gallery-09.jpg', alt: 'The Grove — Detalle arquitectónico' },
-    ];
-
-    const grid = document.getElementById('galleryGrid');
-    galleryImages.forEach((img, i) => {
-      const cell = document.createElement('div');
-      cell.className = 'gallery-cell';
-      cell.innerHTML = `<img src="${img.src}" alt="${img.alt}" loading="lazy" />`;
-      cell.addEventListener('click', () => openLightbox(img.src, img.alt));
-      grid.appendChild(cell);
-    });
+    // Gallery is static HTML
 
     // ── Lightbox ───────────────────────────────────────────────
     function openLightbox(src, alt) {
