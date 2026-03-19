@@ -425,7 +425,6 @@
       align-items: center;
       justify-content: center;
     }
-    .lightbox.open { display: flex; }
     .lightbox img {
       max-width: 90vw;
       max-height: 90vh;
@@ -871,7 +870,7 @@
     <div class="strip-divider"></div>
     <div class="strip-item">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-      Escritura Title
+      Baja California Sur
     </div>
     <div class="strip-divider"></div>
     <div class="strip-item">
@@ -939,19 +938,11 @@
       <p class="section-body" style="color:rgba(255,255,255,0.65)">
         From aerial renders to the finished residence, experience the full arc of The Grove — from concept to reality.
       </p>
-      <div class="video-grid">
-        <div>
-          <div class="video-wrap">
-            <iframe src="https://www.youtube.com/embed/BzMtgRiyoSY" title="The Grove at Pescadero — Aerial Renders" allowfullscreen loading="lazy"></iframe>
-          </div>
-          <p class="video-label">Aerial Render · The Community</p>
+      <div class="video-single" style="margin-top:48px;">
+        <div class="video-wrap" style="max-width:900px;margin:0 auto;">
+          <iframe src="https://www.youtube.com/embed/KqfjxdrBbVQ" title="The Grove at Pescadero — The Finished Residence" allowfullscreen loading="lazy"></iframe>
         </div>
-        <div>
-          <div class="video-wrap">
-            <iframe src="https://www.youtube.com/embed/KqfjxdrBbVQ" title="The Grove at Pescadero — The Finished Residence" allowfullscreen loading="lazy"></iframe>
-          </div>
-          <p class="video-label">The Finished Residence · Tour</p>
-        </div>
+        <p class="video-label" style="text-align:center;margin-top:14px;">The Finished Residence · A Tour of The Grove</p>
       </div>
     </div>
   </section>
@@ -1104,6 +1095,24 @@
     </div>
   </section>
 
+  <!-- ─── MASTERPLAN ──────────────────────────────────────────── -->
+  <section style="background:var(--white);padding:96px 24px 80px;">
+    <div class="container">
+      <p class="section-label">The Community Plan</p>
+      <h2 class="section-title">18 residences,<br/><em>one vision</em></h2>
+      <p class="section-body" style="margin-bottom:48px;">
+        The Grove is thoughtfully planned across a single community — each of the 18 residences privately positioned within the landscape, sharing access to the surrounding farmland and natural surroundings of Pescadero.
+      </p>
+      <div style="border-radius:4px;overflow:hidden;box-shadow:0 24px 64px rgba(26,26,24,0.1);">
+        <img src="./images/masterplan.jpg" alt="The Grove at Pescadero — Site Plan" style="width:100%;display:block;" loading="lazy" />
+      </div>
+      <p style="margin-top:20px;font-size:0.82rem;color:var(--ink-muted);text-align:center;">
+        For full specifications and layouts visit
+        <a href="https://www.grovepescadero.com/site-plan" target="_blank" rel="noopener" style="color:var(--grove-sage);text-decoration:none;">grovepescadero.com</a>
+      </p>
+    </div>
+  </section>
+
   <!-- ─── CONTACT ────────────────────────────────────────────── -->
   <section class="contact-section" id="contact">
     <div class="container">
@@ -1205,16 +1214,22 @@
 
     // ── Lightbox ───────────────────────────────────────────────
     function openLightbox(src, alt) {
-      document.getElementById('lightboxImg').src = src;
-      document.getElementById('lightboxImg').alt = alt;
-      document.getElementById('lightbox').classList.add('open');
+      var lb = document.getElementById('lightbox');
+      var img = document.getElementById('lightboxImg');
+      img.src = src;
+      img.alt = alt || '';
+      lb.style.display = 'flex';
       document.body.style.overflow = 'hidden';
     }
     function closeLightbox() {
-      document.getElementById('lightbox').classList.remove('open');
+      document.getElementById('lightbox').style.display = 'none';
+      document.getElementById('lightboxImg').src = '';
       document.body.style.overflow = '';
     }
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+    document.getElementById('lightbox').addEventListener('click', function(e) {
+      if (e.target === this || e.target.classList.contains('lightbox-close')) closeLightbox();
+    });
+    document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeLightbox(); });
 
     // ── Hero slideshow ─────────────────────────────────────────
     const slides = document.querySelectorAll('.hero-slide');
