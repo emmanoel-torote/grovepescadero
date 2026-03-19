@@ -417,46 +417,6 @@
     .gallery-cell:first-child { aspect-ratio: unset; min-height: 520px; }
     .gallery-cell:not(:first-child) { aspect-ratio: 4/3; }
 
-    /* lightbox */
-    .lightbox {
-      display: flex;
-      visibility: hidden;
-      opacity: 0;
-      pointer-events: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(26,26,24,0.95);
-      z-index: 200;
-      align-items: center;
-      justify-content: center;
-      transition: opacity 0.25s;
-    }
-    .lightbox.open {
-      visibility: visible;
-      opacity: 1;
-      pointer-events: all;
-    }
-    .lightbox img {
-      max-width: 90vw;
-      max-height: 90vh;
-      object-fit: contain;
-      border-radius: 2px;
-    }
-    .lightbox-close {
-      position: absolute;
-      top: 24px;
-      right: 32px;
-      font-size: 2rem;
-      color: var(--white);
-      cursor: pointer;
-      line-height: 1;
-      opacity: 0.7;
-      background: none;
-      border: none;
-      transition: opacity 0.2s;
-    }
-    .lightbox-close:hover { opacity: 1; }
-
     /* ─── RESIDENCE FEATURE ─────────────────────────────────── */
     .residence-section { background: var(--sand); }
     .residence-grid {
@@ -969,31 +929,31 @@
         <p style="font-size:0.85rem;color:var(--ink-muted);max-width:280px;text-align:right;line-height:1.6;">Click any image to view full size. Final photography available upon request.</p>
       </div>
       <div class="gallery-grid" id="galleryGrid">
-        <a class="gallery-cell" href="./images/gallery-01.jpg" data-lightbox>
+        <a class="gallery-cell" href="./images/gallery-01.jpg" target="_blank" rel="noopener">
           <img src="./images/gallery-01.jpg" alt="The Grove — Exterior frontal" loading="lazy" />
         </a>
-        <a class="gallery-cell" href="./images/gallery-02.jpg" data-lightbox>
+        <a class="gallery-cell" href="./images/gallery-02.jpg" target="_blank" rel="noopener">
           <img src="./images/gallery-02.jpg" alt="The Grove — Living / Sala" loading="lazy" />
         </a>
-        <a class="gallery-cell" href="./images/gallery-03.jpg" data-lightbox>
+        <a class="gallery-cell" href="./images/gallery-03.jpg" target="_blank" rel="noopener">
           <img src="./images/gallery-03.jpg" alt="The Grove — Terraza / Pool" loading="lazy" />
         </a>
-        <a class="gallery-cell" href="./images/gallery-04.jpg" data-lightbox>
+        <a class="gallery-cell" href="./images/gallery-04.jpg" target="_blank" rel="noopener">
           <img src="./images/gallery-04.jpg" alt="The Grove — Recámara principal" loading="lazy" />
         </a>
-        <a class="gallery-cell" href="./images/gallery-05.jpg" data-lightbox>
+        <a class="gallery-cell" href="./images/gallery-05.jpg" target="_blank" rel="noopener">
           <img src="./images/gallery-05.jpg" alt="The Grove — Baño principal" loading="lazy" />
         </a>
-        <a class="gallery-cell" href="./images/gallery-06.jpg" data-lightbox>
+        <a class="gallery-cell" href="./images/gallery-06.jpg" target="_blank" rel="noopener">
           <img src="./images/gallery-06.jpg" alt="The Grove — Cocina" loading="lazy" />
         </a>
-        <a class="gallery-cell" href="./images/gallery-07.jpg" data-lightbox>
+        <a class="gallery-cell" href="./images/gallery-07.jpg" target="_blank" rel="noopener">
           <img src="./images/gallery-07.jpg" alt="The Grove — Night shot exterior" loading="lazy" />
         </a>
-        <a class="gallery-cell" href="./images/gallery-08.jpg" data-lightbox>
+        <a class="gallery-cell" href="./images/gallery-08.jpg" target="_blank" rel="noopener">
           <img src="./images/gallery-08.jpg" alt="The Grove — Vista panorámica" loading="lazy" />
         </a>
-        <a class="gallery-cell" href="./images/gallery-09.jpg" data-lightbox>
+        <a class="gallery-cell" href="./images/gallery-09.jpg" target="_blank" rel="noopener">
           <img src="./images/gallery-09.jpg" alt="The Grove — Detalle arquitectónico" loading="lazy" />
         </a>
       </div>
@@ -1212,43 +1172,11 @@
       All prices in USD. Subject to change without notice.
     </div>
   </footer>
-
-  <!-- ─── LIGHTBOX ──────────────────────────────────────────── -->
-  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
-    <button class="lightbox-close" onclick="closeLightbox()">×</button>
-    <img id="lightboxImg" src="" alt="Gallery" />
-  </div>
-
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     // ── Gallery images from Spark CDN ──────────────────────────
     // Gallery is static HTML
 
-    // ── Lightbox ───────────────────────────────────────────────
-    document.addEventListener('click', function(e) {
-      var link = e.target.closest('[data-lightbox]');
-      if (link) {
-        e.preventDefault();
-        var lb = document.getElementById('lightbox');
-        var img = document.getElementById('lightboxImg');
-        img.src = link.getAttribute('href');
-        img.alt = link.querySelector('img') ? link.querySelector('img').alt : '';
-        lb.classList.add('open');
-        document.body.style.overflow = 'hidden';
-      }
-    });
-    function closeLightbox() {
-      var lb = document.getElementById('lightbox');
-      lb.classList.remove('open');
-      setTimeout(function(){ document.getElementById('lightboxImg').src = ''; }, 300);
-      document.body.style.overflow = '';
-    }
-    document.getElementById('lightbox').addEventListener('click', function(e) {
-      if (e.target === this || e.target === document.getElementById('lightboxImg') === false) {
-        if (e.target === this) closeLightbox();
-      }
-    });
-    document.querySelector('.lightbox-close').addEventListener('click', closeLightbox);
-    document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeLightbox(); });
+    // Gallery opens in new tab
 
     // ── Hero slideshow ─────────────────────────────────────────
     const slides = document.querySelectorAll('.hero-slide');
