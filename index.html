@@ -417,13 +417,22 @@
 
     /* lightbox */
     .lightbox {
-      display: none;
+      display: flex;
+      visibility: hidden;
+      opacity: 0;
+      pointer-events: none;
       position: fixed;
       inset: 0;
       background: rgba(26,26,24,0.95);
       z-index: 200;
       align-items: center;
       justify-content: center;
+      transition: opacity 0.25s;
+    }
+    .lightbox.open {
+      visibility: visible;
+      opacity: 1;
+      pointer-events: all;
     }
     .lightbox img {
       max-width: 90vw;
@@ -1214,21 +1223,20 @@
 
     // ── Lightbox ───────────────────────────────────────────────
     function openLightbox(src, alt) {
-      var lb = document.getElementById('lightbox');
-      var img = document.getElementById('lightboxImg');
-      img.src = src;
-      img.alt = alt || '';
-      lb.style.display = 'flex';
+      document.getElementById('lightboxImg').src = src;
+      document.getElementById('lightboxImg').alt = alt || '';
+      document.getElementById('lightbox').classList.add('open');
       document.body.style.overflow = 'hidden';
     }
     function closeLightbox() {
-      document.getElementById('lightbox').style.display = 'none';
+      document.getElementById('lightbox').classList.remove('open');
       document.getElementById('lightboxImg').src = '';
       document.body.style.overflow = '';
     }
     document.getElementById('lightbox').addEventListener('click', function(e) {
-      if (e.target === this || e.target.classList.contains('lightbox-close')) closeLightbox();
+      if (e.target === this) closeLightbox();
     });
+    document.querySelector('.lightbox-close').addEventListener('click', closeLightbox);
     document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeLightbox(); });
 
     // ── Hero slideshow ─────────────────────────────────────────
