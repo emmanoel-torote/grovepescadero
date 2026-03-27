@@ -1150,7 +1150,7 @@
               <label>Message (optional)</label>
               <textarea id="message" placeholder="Tell us about yourself or your timeline…"></textarea>
             </div>
-            <button class="form-submit" id="formSubmit" onclick="submitForm()">Send Inquiry</button>
+            <button class="form-submit" id="formSubmit">Send Inquiry</button>
             <p class="form-note">Your information is kept private and never shared.</p>
           </div>
           <div class="form-success" id="formSuccess">
@@ -1203,6 +1203,9 @@
     }
 
     setInterval(() => goTo((current + 1) % slides.length), 5000);
+
+    // ── Form button ────────────────────────────────────────────
+    document.getElementById('formSubmit').addEventListener('click', submitForm);
 
     // ── Nav scroll ─────────────────────────────────────────────
     window.addEventListener('scroll', () => {
