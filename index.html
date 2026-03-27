@@ -1204,9 +1204,6 @@
 
     setInterval(() => goTo((current + 1) % slides.length), 5000);
 
-    // ── Form button ────────────────────────────────────────────
-    document.getElementById('formSubmit').addEventListener('click', submitForm);
-
     // ── Nav scroll ─────────────────────────────────────────────
     window.addEventListener('scroll', () => {
       document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 60);
@@ -1253,3 +1250,19 @@
           document.getElementById('formSuccess').style.display = 'block';
           if (typeof fbq !== 'undefined') fbq('track', 'Lead');
           if (typeof gtag !== 'undefined') gtag('event', 'generate_lead', { event_category: 'contact', event_label: interest });
+         } else {
+          throw new Error('Form submission failed');
+        }
+      } catch (err) {
+        btn.disabled = false;
+        btn.textContent = 'Send Inquiry';
+        alert('There was an error. Please email rick@ricardoamigo.com or aaronw@ricardoamigo.com directly.');
+      }
+    }
+
+    // ── Form button — attach AFTER function is defined ──────────
+    document.getElementById('formSubmit').addEventListener('click', submitForm);
+
+  </script>
+</body>
+</html>
